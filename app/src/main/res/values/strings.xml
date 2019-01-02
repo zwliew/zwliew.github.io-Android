@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">zwliew</string>
+    <string name="home_title">Home</string>
+    <string name="notes_title">Notes</string>
+    <string name="projects_title">Projects</string>
+    <string name="about_title">About</string>
+    <string name="home_description">Hi, I\'m Zhao Wei.</string>
+    <string name="github_description">GitHub</string>
+    <string name="medium_description">Medium</string>
+    <string name="email_description">Email</string>
+    <string name="stack_exchange_description">Stack Exchange</string>
+    <string name="profile_description">Profile image</string>
+    <string name="about_description">Zhao Wei Liew (zwliew)</string>
+    <string name="resume_description">My resume</string>
+    <string name="launch_email_error">Unable to launch email</string>
+</resources>

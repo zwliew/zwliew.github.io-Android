@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/navigation_graph"
+            app:startDestination="@id/home_fragment">
+    <fragment
+            android:id="@+id/home_fragment"
+            android:name="io.github.zwliew.zwliew.routes.HomeFragment"
+            android:label="Home"
+            tools:layout="@layout/fragment_home">
+        <action android:id="@+id/action_home_fragment_to_notes_fragment" app:destination="@id/notes_fragment"/>
+        <action android:id="@+id/action_home_fragment_to_projectsFragment" app:destination="@id/projects_fragment"/>
+        <action android:id="@+id/action_home_fragment_to_aboutFragment" app:destination="@id/about_fragment"/>
+    </fragment>
+
+    <fragment
+            android:id="@+id/notes_fragment"
+            android:name="io.github.zwliew.zwliew.routes.notes.NotesFragment"
+            android:label="Notes"
+            tools:layout="@layout/fragment_notes"/>
+    <fragment android:id="@+id/projects_fragment"
+              android:name="io.github.zwliew.zwliew.routes.projects.ProjectsFragment"
+              android:label="Projects" tools:layout="@layout/fragment_projects"/>
+    <fragment android:id="@+id/about_fragment" android:name="io.github.zwliew.zwliew.routes.AboutFragment"
+              android:label="About" tools:layout="@layout/fragment_about"/>
+</navigation>
