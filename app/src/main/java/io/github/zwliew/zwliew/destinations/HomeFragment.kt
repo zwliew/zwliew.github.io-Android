@@ -1,4 +1,4 @@
-package io.github.zwliew.zwliew.routes
+package io.github.zwliew.zwliew.destinations
 
 
 import android.content.Context

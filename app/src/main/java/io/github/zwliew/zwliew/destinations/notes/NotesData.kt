@@ -1,4 +1,4 @@
-package io.github.zwliew.zwliew.routes.notes
+package io.github.zwliew.zwliew.destinations.notes
 
 data class NoteDetail(val text: String)
 

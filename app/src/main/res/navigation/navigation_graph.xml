@@ -6,7 +6,7 @@
             app:startDestination="@id/home_fragment">
     <fragment
             android:id="@+id/home_fragment"
-            android:name="io.github.zwliew.zwliew.routes.HomeFragment"
+            android:name="io.github.zwliew.zwliew.destinations.HomeFragment"
             android:label="Home"
             tools:layout="@layout/fragment_home">
         <action android:id="@+id/action_home_fragment_to_notes_fragment" app:destination="@id/notes_fragment"/>
@@ -16,21 +16,21 @@
 
     <fragment
             android:id="@+id/notes_fragment"
-            android:name="io.github.zwliew.zwliew.routes.notes.NotesFragment"
+            android:name="io.github.zwliew.zwliew.destinations.notes.NotesFragment"
             android:label="Notes"
             tools:layout="@layout/fragment_notes">
         <action android:id="@+id/action_notes_fragment_to_settingsFragment" app:destination="@id/settings_fragment"/>
     </fragment>
     <fragment android:id="@+id/projects_fragment"
-              android:name="io.github.zwliew.zwliew.routes.projects.ProjectsFragment"
+              android:name="io.github.zwliew.zwliew.destinations.projects.ProjectsFragment"
               android:label="Projects" tools:layout="@layout/fragment_projects">
         <action android:id="@+id/action_projects_fragment_to_settingsFragment" app:destination="@id/settings_fragment"/>
     </fragment>
-    <fragment android:id="@+id/about_fragment" android:name="io.github.zwliew.zwliew.routes.AboutFragment"
+    <fragment android:id="@+id/about_fragment" android:name="io.github.zwliew.zwliew.destinations.about.AboutFragment"
               android:label="About" tools:layout="@layout/fragment_about">
         <action android:id="@+id/action_about_fragment_to_settingsFragment" app:destination="@id/settings_fragment"/>
     </fragment>
     <fragment android:id="@+id/settings_fragment"
-              android:name="io.github.zwliew.zwliew.routes.settings.SettingsFragment"
+              android:name="io.github.zwliew.zwliew.destinations.settings.SettingsFragment"
               android:label="Settings"/>
 </navigation>

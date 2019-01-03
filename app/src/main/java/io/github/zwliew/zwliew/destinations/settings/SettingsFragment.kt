@@ -1,4 +1,4 @@
-package io.github.zwliew.zwliew.routes.settings
+package io.github.zwliew.zwliew.destinations.settings
 
 import android.os.Bundle
 import android.view.LayoutInflater

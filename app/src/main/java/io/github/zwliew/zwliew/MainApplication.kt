@@ -3,8 +3,8 @@ package io.github.zwliew.zwliew
 import android.app.Application
 import androidx.preference.PreferenceManager
 import com.squareup.leakcanary.LeakCanary
-import io.github.zwliew.zwliew.routes.settings.THEME_PREF_DEFAULT_VALUE
-import io.github.zwliew.zwliew.routes.settings.THEME_PREF_KEY
+import io.github.zwliew.zwliew.destinations.settings.THEME_PREF_DEFAULT_VALUE
+import io.github.zwliew.zwliew.destinations.settings.THEME_PREF_KEY
 import io.github.zwliew.zwliew.util.updateTheme
 import timber.log.Timber
 

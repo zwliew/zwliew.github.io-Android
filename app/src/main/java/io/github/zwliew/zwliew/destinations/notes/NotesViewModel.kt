@@ -1,4 +1,4 @@
-package io.github.zwliew.zwliew.routes.notes
+package io.github.zwliew.zwliew.destinations.notes
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

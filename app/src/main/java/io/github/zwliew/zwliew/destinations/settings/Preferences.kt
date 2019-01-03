@@ -1,4 +1,4 @@
-package io.github.zwliew.zwliew.routes.settings
+package io.github.zwliew.zwliew.destinations.settings
 
 // Theme preference
 const val THEME_PREF_KEY = "theme"

@@ -1,4 +1,4 @@
-package io.github.zwliew.zwliew.routes.projects
+package io.github.zwliew.zwliew.destinations.projects
 
 
 import android.os.Bundle
@@ -8,7 +8,7 @@ import androidx.annotation.MenuRes
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import io.github.zwliew.zwliew.R
-import io.github.zwliew.zwliew.routes.BaseFragment
+import io.github.zwliew.zwliew.destinations.BaseFragment
 import kotlinx.android.synthetic.main.fragment_projects.*
 
 class ProjectsFragment(

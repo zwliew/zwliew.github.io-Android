@@ -1,4 +1,4 @@
-package io.github.zwliew.zwliew.routes.projects
+package io.github.zwliew.zwliew.destinations.projects
 
 data class ProjectList(val projects: List<Project>)
 

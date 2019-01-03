@@ -1,4 +1,4 @@
-package io.github.zwliew.zwliew.routes.notes
+package io.github.zwliew.zwliew.destinations.notes
 
 import android.os.Bundle
 import android.view.MenuItem
@@ -10,7 +10,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.onNavDestinationSelected
 import androidx.recyclerview.widget.LinearLayoutManager
 import io.github.zwliew.zwliew.R
-import io.github.zwliew.zwliew.routes.BaseFragment
+import io.github.zwliew.zwliew.destinations.BaseFragment
 import kotlinx.android.synthetic.main.fragment_notes.*
 
 class NotesFragment(

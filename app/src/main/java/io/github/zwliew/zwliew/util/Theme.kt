@@ -1,7 +1,7 @@
 package io.github.zwliew.zwliew.util
 
 import androidx.appcompat.app.AppCompatDelegate
-import io.github.zwliew.zwliew.routes.settings.ThemeValue
+import io.github.zwliew.zwliew.destinations.settings.ThemeValue
 
 fun updateTheme(themeValue: String) {
     when (themeValue) {
