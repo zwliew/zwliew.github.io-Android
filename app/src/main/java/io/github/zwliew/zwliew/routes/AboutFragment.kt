@@ -6,11 +6,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import androidx.fragment.app.Fragment
+import androidx.annotation.LayoutRes
+import androidx.annotation.MenuRes
 import io.github.zwliew.zwliew.R
 import io.github.zwliew.zwliew.util.launchUrl
 
-class AboutFragment : Fragment() {
+class AboutFragment(
+    @LayoutRes override val layoutId: Int = R.layout.fragment_about,
+    @MenuRes override val menuId: Int = R.menu.menu_generic_toolbar
+) : BaseFragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

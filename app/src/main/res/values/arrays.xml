@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="pref_theme_titles">
+        <item>@string/light_theme_title</item>
+        <item>@string/dark_theme_title</item>
+        <item>@string/auto_theme_title</item>
+        <item>@string/system_theme_title</item>
+    </string-array>
+    <string-array name="pref_theme_values">
+        <item>light</item>
+        <item>dark</item>
+        <item>auto</item>
+        <item>system</item>
+    </string-array>
+</resources>

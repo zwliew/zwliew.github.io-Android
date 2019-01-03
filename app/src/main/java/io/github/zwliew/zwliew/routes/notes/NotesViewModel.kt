@@ -1,20 +1,18 @@
 package io.github.zwliew.zwliew.routes.notes
 
-import android.view.View
 import androidx.lifecycle.MutableLiveData
-import io.github.zwliew.zwliew.ScopedViewModel
-import io.github.zwliew.zwliew.util.BASE_URL
-import io.github.zwliew.zwliew.util.launchUrl
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ObsoleteCoroutinesApi
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.channels.actor
 import kotlinx.coroutines.withContext
 
-class NotesViewModel : ScopedViewModel() {
-    // Ensure that only 1 refresh request gets processed and that subsequent requests get discarded
+class NotesViewModel : ViewModel() {
+    // Ensure that only 1 request is buffered while another is being processed
     @UseExperimental(ObsoleteCoroutinesApi::class)
-    private val actor = scope.actor<Unit>(capacity = Channel.CONFLATED) {
+    private val actor = viewModelScope.actor<Unit>(capacity = Channel.CONFLATED) {
         for (event in channel) {
             refreshing.value = true
             notes.value = withContext(Dispatchers.IO) {
@@ -34,9 +32,4 @@ class NotesViewModel : ScopedViewModel() {
     }
 
     fun handleRefresh() = actor.offer(Unit)
-
-    fun handleNoteClicked(view: View, slug: String) {
-        // TODO: Parse markdown and display in app
-        launchUrl(view, view.context, "$BASE_URL/notes/$slug")
-    }
 }

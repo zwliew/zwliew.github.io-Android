@@ -13,4 +13,10 @@
     <string name="about_description">Zhao Wei Liew (zwliew)</string>
     <string name="resume_description">My resume</string>
     <string name="launch_email_error">Unable to launch email</string>
+    <string name="settings_title">Settings</string>
+    <string name="refresh_title">Refresh</string>
+    <string name="light_theme_title">Light</string>
+    <string name="dark_theme_title">Dark</string>
+    <string name="auto_theme_title">Automatic based on time</string>
+    <string name="system_theme_title">Use system setting</string>
 </resources>

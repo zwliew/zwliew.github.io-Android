@@ -11,3 +11,5 @@ val retrofit: Retrofit by lazy {
         .addConverterFactory(MoshiConverterFactory.create())
         .build()
 }
+
+const val BASE_URL = "https://zwliew.netlify.com"

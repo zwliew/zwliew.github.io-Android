@@ -7,19 +7,17 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import io.github.zwliew.zwliew.R
+import io.github.zwliew.zwliew.util.BASE_URL
+import io.github.zwliew.zwliew.util.launchUrl
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.view_note_item.*
 
-class NotesListAdapter(
-    private val handleClick: (View, String) -> Unit
-) : ListAdapter<NoteSummary, NoteViewHolder>(DiffCallback) {
+class NotesListAdapter : ListAdapter<NoteSummary, NoteViewHolder>(DiffCallback) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoteViewHolder {
         return NoteViewHolder(
             LayoutInflater.from(parent.context)
                 .inflate(R.layout.view_note_item, parent, false)
-        ) { view, slug ->
-            handleClick(view, slug)
-        }
+        )
     }
 
     override fun onBindViewHolder(holder: NoteViewHolder, position: Int) {
@@ -28,16 +26,13 @@ class NotesListAdapter(
 }
 
 class NoteViewHolder(
-    override val containerView: View,
-    private val handleClick: (View, String) -> Unit
+    override val containerView: View
 ) : RecyclerView.ViewHolder(containerView), LayoutContainer {
     private lateinit var slug: String
 
     init {
-        with(containerView) {
-            setOnClickListener {
-                handleClick(it, slug)
-            }
+        containerView.setOnClickListener {
+            launchUrl(it, it.context, "$BASE_URL/notes/$slug")
         }
     }
 
