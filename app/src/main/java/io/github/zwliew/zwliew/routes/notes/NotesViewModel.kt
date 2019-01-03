@@ -2,22 +2,24 @@ package io.github.zwliew.zwliew.routes.notes
 
 import android.view.View
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import io.github.zwliew.zwliew.ScopedViewModel
 import io.github.zwliew.zwliew.util.BASE_URL
 import io.github.zwliew.zwliew.util.launchUrl
-import kotlinx.coroutines.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.ObsoleteCoroutinesApi
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.channels.actor
+import kotlinx.coroutines.withContext
 
-class NotesViewModel : ViewModel() {
-    // Coroutines
-    private val scope = CoroutineScope(Dispatchers.Main)
+class NotesViewModel : ScopedViewModel() {
     // Ensure that only 1 refresh request gets processed and that subsequent requests get discarded
     @UseExperimental(ObsoleteCoroutinesApi::class)
     private val actor = scope.actor<Unit>(capacity = Channel.CONFLATED) {
         for (event in channel) {
             refreshing.value = true
-            notes.value = NotesRepository.loadNotes().value
+            notes.value = withContext(Dispatchers.IO) {
+                NotesRepository.loadNotes()
+            }
             refreshing.value = false
         }
     }
@@ -25,13 +27,6 @@ class NotesViewModel : ViewModel() {
     // Observable data
     val notes = MutableLiveData<List<NoteSummary>>()
     val refreshing = MutableLiveData<Boolean>()
-
-    @UseExperimental(ExperimentalCoroutinesApi::class)
-    override fun onCleared() {
-        super.onCleared()
-
-        scope.cancel()
-    }
 
     fun handleRefresh() = actor.offer(Unit)
 

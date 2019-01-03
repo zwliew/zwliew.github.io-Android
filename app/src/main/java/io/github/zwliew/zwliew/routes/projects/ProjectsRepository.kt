@@ -1,7 +1,5 @@
 package io.github.zwliew.zwliew.routes.projects
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import io.github.zwliew.zwliew.util.retrofit
 import timber.log.Timber
 
@@ -10,14 +8,12 @@ object ProjectsRepository {
 
     private val cache = ProjectsCache()
 
-    suspend fun loadProjects(): LiveData<List<Project>> {
-        val projects = MutableLiveData<List<Project>>()
+    suspend fun loadProjects(): List<Project> {
 
         // Check cache
         if (cache.initialized) {
             Timber.d("Cache already initialized")
-            projects.value = cache.projects
-            return projects
+            return cache.projects
         }
 
         // Fetch from network
@@ -25,8 +21,7 @@ object ProjectsRepository {
         with(response.projects) {
             cache.projects = this
             cache.initialized = true
-            projects.value = this
+            return this
         }
-        return projects
     }
 }
