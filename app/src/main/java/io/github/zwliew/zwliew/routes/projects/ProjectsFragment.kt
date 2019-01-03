@@ -33,9 +33,6 @@ class ProjectsFragment : Fragment() {
             layout.isRefreshing = it
         })
 
-        // Refresh to populate initial data
-        viewModel.handleRefresh()
-
         return view
     }
 

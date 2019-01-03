@@ -26,5 +26,10 @@ class ProjectsViewModel : ScopedViewModel() {
     val projects = MutableLiveData<List<Project>>()
     val refreshing = MutableLiveData<Boolean>()
 
+    init {
+        // Populate initial data
+        handleRefresh()
+    }
+
     fun handleRefresh() = actor.offer(Unit)
 }

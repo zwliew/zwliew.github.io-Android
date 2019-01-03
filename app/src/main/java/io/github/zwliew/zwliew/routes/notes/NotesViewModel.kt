@@ -28,6 +28,11 @@ class NotesViewModel : ScopedViewModel() {
     val notes = MutableLiveData<List<NoteSummary>>()
     val refreshing = MutableLiveData<Boolean>()
 
+    init {
+        // Populate initial data
+        handleRefresh()
+    }
+
     fun handleRefresh() = actor.offer(Unit)
 
     fun handleNoteClicked(view: View, slug: String) {
