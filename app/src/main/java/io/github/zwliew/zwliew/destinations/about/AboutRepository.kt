@@ -45,7 +45,7 @@ object AboutRepository {
 
     private suspend fun fetchFromNetwork(): AboutList {
         val data = withContext(Dispatchers.IO) {
-            service.getAbout().await()
+            service.getAboutAsync().await()
         }
 
         // Cache the retrieved data

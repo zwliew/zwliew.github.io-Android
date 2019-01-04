@@ -5,5 +5,5 @@ import retrofit2.http.GET
 
 interface AboutService {
     @GET("about.json")
-    fun getAbout(): Deferred<AboutList>
+    fun getAboutAsync(): Deferred<AboutList>
 }

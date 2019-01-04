@@ -3,11 +3,9 @@ package io.github.zwliew.zwliew.destinations.projects
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ObsoleteCoroutinesApi
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.channels.actor
-import kotlinx.coroutines.withContext
 
 class ProjectsViewModel : ViewModel() {
     // Coroutines
@@ -16,9 +14,7 @@ class ProjectsViewModel : ViewModel() {
     private val actor = viewModelScope.actor<Unit>(capacity = Channel.CONFLATED) {
         for (event in channel) {
             refreshing.value = true
-            projects.value = withContext(Dispatchers.IO) {
-                ProjectsRepository.loadProjects()
-            }
+            projects.value = ProjectsRepository.loadProjects()
             refreshing.value = false
         }
     }
