@@ -30,5 +30,6 @@
             app:layout_constraintTop_toBottomOf="@+id/name_text"
             app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="8dp"
             app:layout_constrainedHeight="true"
-            app:layout_constrainedWidth="true"/>
+            app:layout_constrainedWidth="true"
+            android:scrollbars="vertical"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

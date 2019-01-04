@@ -1,5 +1,6 @@
 package io.github.zwliew.zwliew.destinations.notes
 
+import android.text.method.ScrollingMovementMethod
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -31,6 +32,7 @@ class NoteViewHolder(
     private lateinit var slug: String
 
     init {
+        summary_text.movementMethod = ScrollingMovementMethod()
         containerView.setOnClickListener {
             launchUrl(it, it.context, "$BASE_URL/notes/$slug")
         }

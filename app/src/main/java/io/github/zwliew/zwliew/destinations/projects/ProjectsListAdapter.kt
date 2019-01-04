@@ -1,5 +1,6 @@
 package io.github.zwliew.zwliew.destinations.projects
 
+import android.text.method.ScrollingMovementMethod
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -30,6 +31,7 @@ class ProjectViewHolder(
     private lateinit var href: String
 
     init {
+        description_text.movementMethod = ScrollingMovementMethod()
         with(containerView) {
             setOnClickListener {
                 launchUrl(this, context, href)
