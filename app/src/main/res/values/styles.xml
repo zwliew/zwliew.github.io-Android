@@ -5,4 +5,8 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:windowBackground">@color/backgroundColor</item>
     </style>
+
+    <style name="AppTheme.Title">
+        <item name="fontFamily">@font/nunito</item>
+    </style>
 </resources>

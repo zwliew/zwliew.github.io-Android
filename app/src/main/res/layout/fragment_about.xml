@@ -29,6 +29,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imageView" android:layout_marginTop="16dp"
+                style="@style/AppTheme.Title"
         />
         <Button
                 android:text="@string/resume_description"
@@ -39,6 +40,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/text" app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintHorizontal_bias="0.5" app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginTop="16dp"
+                android:textColor="@color/colorAccent"
         />
         <ExpandableListView
                 android:layout_width="match_parent"
@@ -52,6 +54,7 @@
                 app:layout_constraintHeight_default="spread"
                 app:layout_constraintHeight_min="400dp"
                 android:divider="@null"
-                android:indicatorLeft="16dp"/>
+                android:indicatorLeft="16dp"
+                android:indicatorStart="16dp"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>

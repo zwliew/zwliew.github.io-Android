@@ -18,7 +18,7 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Body1" android:layout_marginTop="8dp"
             app:layout_constraintTop_toTopOf="parent"
             android:textStyle="normal|bold"
-    />
+            style="@style/AppTheme.Title"/>
     <TextView
             tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Commodo sed egestas egestas fringilla phasellus faucibus scelerisque eleifend."
             android:layout_width="wrap_content"
