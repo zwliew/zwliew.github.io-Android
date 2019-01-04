@@ -1,7 +1,6 @@
 package io.github.zwliew.zwliew.destinations.notes
 
 import io.github.zwliew.zwliew.util.retrofit
-import timber.log.Timber
 
 object NotesRepository {
     private val service = retrofit.create(NotesService::class.java)
@@ -11,7 +10,6 @@ object NotesRepository {
     suspend fun loadNotes(): List<NoteSummary> {
         // Check cache
         if (cache.initialized) {
-            Timber.d("Cache already initialized")
             return cache.summaries
         }
 

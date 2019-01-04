@@ -1,7 +1,6 @@
 package io.github.zwliew.zwliew.destinations.projects
 
 import io.github.zwliew.zwliew.util.retrofit
-import timber.log.Timber
 
 object ProjectsRepository {
     private val service = retrofit.create(ProjectsService::class.java)
@@ -12,7 +11,6 @@ object ProjectsRepository {
 
         // Check cache
         if (cache.initialized) {
-            Timber.d("Cache already initialized")
             return cache.projects
         }
 

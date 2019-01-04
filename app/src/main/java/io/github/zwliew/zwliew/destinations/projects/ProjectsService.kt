@@ -4,6 +4,6 @@ import kotlinx.coroutines.Deferred
 import retrofit2.http.GET
 
 interface ProjectsService {
-    @GET("res/data/projects.json")
+    @GET("projects.json")
     fun getProjectsAsync(): Deferred<ProjectList>
 }

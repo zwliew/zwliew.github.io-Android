@@ -35,6 +35,7 @@ class NoteViewHolder(
         summary_text.movementMethod = ScrollingMovementMethod()
         containerView.setOnClickListener {
             launchUrl(it, it.context, "$BASE_URL/notes/$slug")
+            // TODO: Launch in app
         }
     }
 

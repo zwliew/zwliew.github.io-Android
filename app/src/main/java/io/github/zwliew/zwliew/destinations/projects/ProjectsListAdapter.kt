@@ -35,6 +35,7 @@ class ProjectViewHolder(
         with(containerView) {
             setOnClickListener {
                 launchUrl(this, context, href)
+                // TODO: Use custom tabs
             }
         }
     }
@@ -42,7 +43,7 @@ class ProjectViewHolder(
     fun bind(project: Project) {
         with(project) {
             this@ProjectViewHolder.href = href
-            name_text.text = name
+            text.text = name
             description_text.text = description
         }
     }
