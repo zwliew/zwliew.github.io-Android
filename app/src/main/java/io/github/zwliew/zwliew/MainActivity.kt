@@ -7,6 +7,10 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import kotlinx.android.synthetic.main.activity_main.*
 
+const val ACTION_VIEW_NOTES = "io.github.zwliew.zwliew.action.VIEW_NOTES"
+const val ACTION_VIEW_PROJECTS = "io.github.zwliew.zwliew.action.VIEW_PROJECTS"
+const val ACTION_VIEW_ABOUT = "io.github.zwliew.zwliew.action.VIEW_ABOUT"
+
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,6 +27,16 @@ class MainActivity : AppCompatActivity() {
                     )
                 )
             )
+        }
+
+        // Handle app shortcut intents
+        when (intent.action) {
+            ACTION_VIEW_NOTES -> R.id.notes_fragment
+            ACTION_VIEW_PROJECTS -> R.id.projects_fragment
+            ACTION_VIEW_ABOUT -> R.id.about_fragment
+            else -> null
+        }?.let {
+            navController.navigate(it)
         }
     }
 }

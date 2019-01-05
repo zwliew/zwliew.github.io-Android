@@ -12,16 +12,6 @@ class MainApplication : Application() {
     override fun onCreate() {
         super.onCreate()
 
-        // Set default preferences
-        PreferenceManager.setDefaultValues(this, R.xml.preference_settings, false)
-
-        // Set DayNight mode
-        val sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this)
-        val themePrefVal = sharedPrefs.getString(THEME_PREF_KEY, THEME_PREF_DEFAULT_VALUE)
-        themePrefVal?.let {
-            updateTheme(it)
-        }
-
         // Install LeakCanary
         if (LeakCanary.isInAnalyzerProcess(this)) {
             // This process is dedicated to LeakCanary for heap analysis.
@@ -32,5 +22,15 @@ class MainApplication : Application() {
 
         // Install Timber
         if (BuildConfig.DEBUG) Timber.plant(Timber.DebugTree())
+
+        // Set default preferences
+        PreferenceManager.setDefaultValues(this, R.xml.preference_settings, false)
+
+        // Set DayNight mode
+        val sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this)
+        val themePrefVal = sharedPrefs.getString(THEME_PREF_KEY, THEME_PREF_DEFAULT_VALUE)
+        themePrefVal?.let {
+            updateTheme(it)
+        }
     }
 }

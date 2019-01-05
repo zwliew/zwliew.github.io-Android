@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shortcuts
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:targetApi="n_mr1">
+    <shortcut
+        android:icon="@drawable/ic_note_24dp"
+        android:shortcutId="notes"
+        android:shortcutShortLabel="@string/notes_title">
+        <intent
+            android:action="io.github.zwliew.zwliew.action.VIEW_NOTES"
+            android:targetClass="io.github.zwliew.zwliew.MainActivity"
+            android:targetPackage="io.github.zwliew.zwliew" />
+    </shortcut>
+    <shortcut
+        android:icon="@drawable/ic_build_24dp"
+        android:shortcutId="projects"
+        android:shortcutShortLabel="@string/projects_title">
+        <intent
+            android:action="io.github.zwliew.zwliew.action.VIEW_PROJECTS"
+            android:targetClass="io.github.zwliew.zwliew.MainActivity"
+            android:targetPackage="io.github.zwliew.zwliew" />
+    </shortcut>
+    <shortcut
+        android:icon="@drawable/ic_info_outline_24dp"
+        android:shortcutId="about"
+        android:shortcutShortLabel="@string/about_title">
+        <intent
+            android:action="io.github.zwliew.zwliew.action.VIEW_ABOUT"
+            android:targetClass="io.github.zwliew.zwliew.MainActivity"
+            android:targetPackage="io.github.zwliew.zwliew" />
+    </shortcut>
+</shortcuts>

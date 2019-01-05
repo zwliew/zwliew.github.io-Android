@@ -1,3 +1,4 @@
+<!-- This is exactly the same as the -v21 variant. This is simply to override the -night variant. -->
 <vector
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:width="24dp"
