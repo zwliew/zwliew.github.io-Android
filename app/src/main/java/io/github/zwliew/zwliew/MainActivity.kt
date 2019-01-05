@@ -1,6 +1,7 @@
 package io.github.zwliew.zwliew
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -27,6 +28,14 @@ class MainActivity : AppCompatActivity() {
                     )
                 )
             )
+        }
+
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            bottom_navigation.visibility = if (destination.id == R.id.settings_fragment) {
+                View.GONE
+            } else {
+                View.VISIBLE
+            }
         }
 
         // Handle app shortcut intents
