@@ -1,12 +1,13 @@
 <androidx.preference.PreferenceScreen
-        xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.preference.ListPreference
-            app:key="theme"
-            app:title="Theme"
-            app:entries="@array/pref_theme_titles"
-            app:entryValues="@array/pref_theme_values"
-            app:useSimpleSummaryProvider="true"
-            android:defaultValue="system"/>
+        android:defaultValue="system"
+        app:entries="@array/pref_theme_titles"
+        app:entryValues="@array/pref_theme_values"
+        app:key="theme"
+        app:title="Theme"
+        app:useSimpleSummaryProvider="true" />
 
 </androidx.preference.PreferenceScreen>

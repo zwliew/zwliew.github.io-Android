@@ -1,70 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".destinations.HomeFragment">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".destinations.HomeFragment">
+
     <ImageView
-            app:srcCompat="@drawable/profile"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/profile_image" app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.497"
-            app:layout_constraintBottom_toTopOf="@id/description_text" app:layout_constraintVertical_bias="0.859"
-            android:layout_marginBottom="16dp" android:layout_marginTop="16dp"
-            android:contentDescription="@string/profile_description"/>
+        android:id="@+id/profile_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:contentDescription="@string/profile_description"
+        app:layout_constraintBottom_toTopOf="@id/description_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.859"
+        app:srcCompat="@drawable/profile" />
+
     <TextView
-            android:text="@string/home_description"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/description_text"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="0.5" app:layout_constraintTop_toTopOf="parent"
-            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-            app:layout_constraintVertical_bias="0.615"
-            style="@style/AppTheme.Title"/>
+        android:id="@+id/description_text"
+        style="@style/AppTheme.Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/home_description"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.615" />
+
     <ImageButton
-            android:src="@drawable/ic_github_24dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/github_button"
-            style="?attr/borderlessButtonStyle"
-            app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintEnd_toStartOf="@id/medium_button" android:layout_marginTop="32dp"
-            app:layout_constraintTop_toBottomOf="@id/description_text"
-            android:contentDescription="@string/github_description"/>
+        android:id="@+id/github_button"
+        style="?attr/borderlessButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:contentDescription="@string/github_description"
+        android:src="@drawable/ic_github_24dp"
+        app:layout_constraintEnd_toStartOf="@id/medium_button"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/description_text" />
+
     <ImageButton
-            android:src="@drawable/ic_medium_24dp"
-            android:layout_width="wrap_content"
-            style="?attr/borderlessButtonStyle"
-            android:layout_height="wrap_content"
-            android:id="@+id/medium_button"
-            app:layout_constraintStart_toEndOf="@id/github_button" app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintEnd_toStartOf="@id/email_button"
-            app:layout_constraintTop_toTopOf="@id/github_button"
-            android:contentDescription="@string/medium_description"/>
+        android:id="@+id/medium_button"
+        style="?attr/borderlessButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/medium_description"
+        android:src="@drawable/ic_medium_24dp"
+        app:layout_constraintEnd_toStartOf="@id/email_button"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@id/github_button"
+        app:layout_constraintTop_toTopOf="@id/github_button" />
+
     <ImageButton
-            android:src="@drawable/ic_email_24dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            style="?attr/borderlessButtonStyle"
-            android:id="@+id/email_button"
-            app:layout_constraintStart_toEndOf="@id/medium_button" app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintEnd_toStartOf="@id/stack_exchange_button"
-            app:layout_constraintTop_toTopOf="@id/medium_button"
-            android:contentDescription="@string/email_description"/>
+        android:id="@+id/email_button"
+        style="?attr/borderlessButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/email_description"
+        android:src="@drawable/ic_email_24dp"
+        app:layout_constraintEnd_toStartOf="@id/stack_exchange_button"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@id/medium_button"
+        app:layout_constraintTop_toTopOf="@id/medium_button" />
+
     <ImageButton
-            android:src="@drawable/ic_stack_exchange_24dp"
-            android:layout_width="wrap_content"
-            style="?attr/borderlessButtonStyle"
-            android:layout_height="wrap_content"
-            android:id="@+id/stack_exchange_button"
-            app:layout_constraintStart_toEndOf="@id/email_button"
-            app:layout_constraintHorizontal_bias="0.5" app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/email_button"
-            android:contentDescription="@string/stack_exchange_description"/>
+        android:id="@+id/stack_exchange_button"
+        style="?attr/borderlessButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/stack_exchange_description"
+        android:src="@drawable/ic_stack_exchange_24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@id/email_button"
+        app:layout_constraintTop_toTopOf="@id/email_button" />
 </androidx.constraintlayout.widget.ConstraintLayout>
