@@ -1,8 +1,6 @@
 package io.github.zwliew.zwliew.destinations.about
 
 import io.github.zwliew.zwliew.util.retrofit
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
 
 object AboutRepository {
     private val service = retrofit.create(AboutService::class.java)
@@ -44,10 +42,7 @@ object AboutRepository {
     }
 
     private suspend fun fetchFromNetwork(): AboutList {
-        val data = withContext(Dispatchers.IO) {
-            service.getAboutAsync().await()
-        }
-
+        val data = service.getAboutAsync().await()
         // Cache the retrieved data
         with(data) {
             cache.education = education

@@ -1,8 +1,6 @@
 package io.github.zwliew.zwliew.destinations.projects
 
 import io.github.zwliew.zwliew.util.retrofit
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
 
 object ProjectsRepository {
     private val service = retrofit.create(ProjectsService::class.java)
@@ -17,9 +15,7 @@ object ProjectsRepository {
         }
 
         // Fetch from network
-        val response = withContext(Dispatchers.IO) {
-            service.getProjectsAsync().await()
-        }
+        val response = service.getProjectsAsync().await()
         with(response.projects) {
             cache.projects = this
             cache.initialized = true
