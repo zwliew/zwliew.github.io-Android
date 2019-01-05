@@ -20,19 +20,17 @@ class HomeFragment(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        with(view) {
-            github_button.setOnClickListener {
-                viewUri(view, view.context, "https://github.com/zwliew")
-            }
-            medium_button.setOnClickListener {
-                viewUri(this, context, "https://medium.com/@zwliew")
-            }
-            email_button.setOnClickListener {
-                composeEmail(this, context, "zhaoweiliew@gmail.com")
-            }
-            stack_exchange_button.setOnClickListener {
-                viewUri(this, context, "https://stackexchange.com/users/3912119/zwliew")
-            }
+        github_button.setOnClickListener {
+            viewUri(it, it.context, "https://github.com/zwliew")
+        }
+        medium_button.setOnClickListener {
+            viewUri(it, it.context, "https://medium.com/@zwliew")
+        }
+        email_button.setOnClickListener {
+            composeEmail(it, it.context, "zhaoweiliew@gmail.com")
+        }
+        stack_exchange_button.setOnClickListener {
+            viewUri(it, it.context, "https://stackexchange.com/users/3912119/zwliew")
         }
     }
 

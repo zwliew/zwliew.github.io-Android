@@ -24,24 +24,22 @@ class ProjectsFragment(
         val listAdapter = ProjectsListAdapter()
 
         // Bind ViewModel state
-        with(viewModel) {
+        viewModel.apply {
             projects.observe({ lifecycle }) {
                 listAdapter.submitList(it)
             }
-            with(layout) {
-                refreshing.observe({ lifecycle }) {
-                    isRefreshing = it
-                }
-
-                // Set up the SwipeRefreshLayout
-                setOnRefreshListener {
-                    handleRefresh()
-                }
+            refreshing.observe({ lifecycle }) {
+                layout.isRefreshing = it
             }
         }
 
+        // Set up the SwipeRefreshLayout
+        layout.setOnRefreshListener {
+            viewModel.handleRefresh()
+        }
+
         // Set up RecyclerView
-        with(list) {
+        list.apply {
             setHasFixedSize(true)
             layoutManager = LinearLayoutManager(view.context)
             adapter = listAdapter

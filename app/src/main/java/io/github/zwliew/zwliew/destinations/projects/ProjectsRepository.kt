@@ -16,10 +16,10 @@ object ProjectsRepository {
 
         // Fetch from network
         val response = service.getProjectsAsync().await()
-        with(response.projects) {
-            cache.projects = this
+        return response.projects.also {
+            // Cache the retrieved data
+            cache.projects = it
             cache.initialized = true
-            return this
         }
     }
 }

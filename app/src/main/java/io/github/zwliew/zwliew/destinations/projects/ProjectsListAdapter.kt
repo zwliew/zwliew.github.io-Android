@@ -32,18 +32,16 @@ class ProjectViewHolder(
 
     init {
         description_text.movementMethod = ScrollingMovementMethod()
-        with(containerView) {
-            setOnClickListener {
-                viewUri(it, it.context, href)
-            }
+        containerView.setOnClickListener {
+            viewUri(it, it.context, href)
         }
     }
 
     fun bind(project: Project) {
-        with(project) {
-            this@ProjectViewHolder.href = href
-            text.text = name
-            description_text.text = description
+        project.let {
+            href = it.href
+            text.text = it.name
+            description_text.text = it.description
         }
     }
 }

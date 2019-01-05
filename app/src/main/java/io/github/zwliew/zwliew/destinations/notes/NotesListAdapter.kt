@@ -40,10 +40,10 @@ class NoteViewHolder(
     }
 
     fun bind(note: NoteSummary) {
-        with(note) {
-            this@NoteViewHolder.slug = slug
-            title_text.text = title
-            summary_text.text = summary
+        note.let {
+            slug = it.slug
+            title_text.text = it.title
+            summary_text.text = it.summary
         }
     }
 }

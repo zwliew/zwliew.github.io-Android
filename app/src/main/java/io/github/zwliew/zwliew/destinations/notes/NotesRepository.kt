@@ -15,10 +15,10 @@ object NotesRepository {
 
         // Fetch from network
         val response = service.getNotesAsync().await()
-        with(response.notes) {
-            cache.summaries = this
+        return response.notes.also {
+            // Cache the retrieved data
+            cache.summaries = it
             cache.initialized = true
-            return this
         }
     }
 }

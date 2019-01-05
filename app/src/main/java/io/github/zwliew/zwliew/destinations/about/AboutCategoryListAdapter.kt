@@ -81,7 +81,7 @@ class AboutCategoryListAdapter(
         val data = getChild(groupPos, childPos)
         val view = convertView ?: LayoutInflater.from(parent.context)
             .inflate(R.layout.view_about_category_item, parent, false)
-        with(view) {
+        view.run {
             val itemText = findViewById<TextView>(R.id.item_text)
             itemText.text = when (getGroupTitle(groupPos)) {
                 EDUCATIONS_TITLE -> formatEducationText(data as Education)

@@ -43,13 +43,12 @@ object AboutRepository {
 
     private suspend fun fetchFromNetwork(): AboutList {
         val data = service.getAboutAsync().await()
-        // Cache the retrieved data
-        with(data) {
-            cache.education = education
-            cache.achievements = achievements
-            cache.activities = activities
+        return data.also {
+            // Cache the retrieved data
+            cache.education = it.education
+            cache.achievements = it.achievements
+            cache.activities = it.activities
             cache.initialized = true
-            return this
         }
     }
 }
