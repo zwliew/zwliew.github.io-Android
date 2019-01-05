@@ -4,11 +4,11 @@ import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterF
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 
-const val BASE_URL = "https://zwliew.netlify.com/res/data/"
+const val API_BASE_URL = "https://zwliew.netlify.com/"
 
 val retrofit: Retrofit by lazy {
     Retrofit.Builder()
-        .baseUrl(BASE_URL)
+        .baseUrl(API_BASE_URL)
         .addCallAdapterFactory(CoroutineCallAdapterFactory())
         .addConverterFactory(MoshiConverterFactory.create())
         .build()

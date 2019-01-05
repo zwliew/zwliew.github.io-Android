@@ -8,8 +8,8 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import io.github.zwliew.zwliew.R
-import io.github.zwliew.zwliew.util.BASE_URL
-import io.github.zwliew.zwliew.util.launchUrl
+import io.github.zwliew.zwliew.util.API_BASE_URL
+import io.github.zwliew.zwliew.util.viewUri
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.view_note_item.*
 
@@ -34,8 +34,8 @@ class NoteViewHolder(
     init {
         summary_text.movementMethod = ScrollingMovementMethod()
         containerView.setOnClickListener {
-            launchUrl(it, it.context, "$BASE_URL/notes/$slug")
             // TODO: Launch in app
+            viewUri(it, it.context, "${API_BASE_URL}notes/$slug")
         }
     }
 

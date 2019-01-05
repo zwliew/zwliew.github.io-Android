@@ -8,7 +8,7 @@ import android.widget.TextView
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LiveData
 import io.github.zwliew.zwliew.R
-import io.github.zwliew.zwliew.util.launchUrl
+import io.github.zwliew.zwliew.util.viewUri
 import timber.log.Timber
 
 
@@ -90,7 +90,7 @@ class AboutCategoryListAdapter(
                 else -> throw IllegalArgumentException()
             }
             setOnClickListener {
-                launchUrl(it, it.context, data.href)
+                viewUri(it, it.context, data.href)
             }
         }
         return view

@@ -10,7 +10,7 @@ import androidx.annotation.LayoutRes
 import androidx.annotation.MenuRes
 import com.google.android.material.snackbar.Snackbar
 import io.github.zwliew.zwliew.R
-import io.github.zwliew.zwliew.util.launchUrl
+import io.github.zwliew.zwliew.util.viewUri
 import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment(
@@ -22,16 +22,16 @@ class HomeFragment(
 
         with(view) {
             github_button.setOnClickListener {
-                launchUrl(view, view.context, "https://github.com/zwliew")
+                viewUri(view, view.context, "https://github.com/zwliew")
             }
             medium_button.setOnClickListener {
-                launchUrl(this, context, "https://medium.com/@zwliew")
+                viewUri(this, context, "https://medium.com/@zwliew")
             }
             email_button.setOnClickListener {
                 composeEmail(this, context, "zhaoweiliew@gmail.com")
             }
             stack_exchange_button.setOnClickListener {
-                launchUrl(this, context, "https://stackexchange.com/users/3912119/zwliew")
+                viewUri(this, context, "https://stackexchange.com/users/3912119/zwliew")
             }
         }
     }

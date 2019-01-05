@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import io.github.zwliew.zwliew.R
-import io.github.zwliew.zwliew.util.launchUrl
+import io.github.zwliew.zwliew.util.viewUri
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.view_project_item.*
 
@@ -34,8 +34,7 @@ class ProjectViewHolder(
         description_text.movementMethod = ScrollingMovementMethod()
         with(containerView) {
             setOnClickListener {
-                launchUrl(this, context, href)
-                // TODO: Use custom tabs
+                viewUri(it, it.context, href)
             }
         }
     }

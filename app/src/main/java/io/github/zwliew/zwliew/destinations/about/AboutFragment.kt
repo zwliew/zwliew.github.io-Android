@@ -9,7 +9,7 @@ import androidx.core.view.ViewCompat
 import androidx.lifecycle.ViewModelProviders
 import io.github.zwliew.zwliew.R
 import io.github.zwliew.zwliew.destinations.BaseFragment
-import io.github.zwliew.zwliew.util.launchUrl
+import io.github.zwliew.zwliew.util.viewUri
 import kotlinx.android.synthetic.main.fragment_about.*
 
 class AboutFragment(
@@ -22,7 +22,7 @@ class AboutFragment(
         // Configure event handlers
         with(view) {
             resume_button.setOnClickListener {
-                launchUrl(this, context, "https://zwliew.netlify.com/res/resume.pdf")
+                viewUri(this, context, "https://zwliew.netlify.com/res/resume.pdf")
             }
         }
 
