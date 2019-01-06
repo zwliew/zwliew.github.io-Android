@@ -1,24 +1,20 @@
 package io.github.zwliew.zwliew.destinations.notes
 
+import androidx.lifecycle.MutableLiveData
+import io.github.zwliew.zwliew.BaseRepository
 import io.github.zwliew.zwliew.util.retrofit
 
-object NotesRepository {
+object NotesRepository : BaseRepository<NotesData> {
     private val service = retrofit.create(NotesService::class.java)
 
-    private val cache = NotesCache()
+    override val data = MutableLiveData<NotesData>()
 
-    suspend fun loadNotes(): List<NoteSummary> {
-        // Check cache
-        if (cache.initialized) {
-            return cache.summaries
-        }
-
-        // Fetch from network
+    override suspend fun load() {
         val response = service.getNotesAsync().await()
-        return response.notes.also {
-            // Cache the retrieved data
-            cache.summaries = it
-            cache.initialized = true
+        response.let {
+            data.value = NotesData(
+                it.notes
+            )
         }
     }
 }

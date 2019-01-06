@@ -1,6 +1,7 @@
 package io.github.zwliew.zwliew.destinations.projects
 
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.ObsoleteCoroutinesApi
@@ -14,19 +15,16 @@ class ProjectsViewModel : ViewModel() {
     private val actor = viewModelScope.actor<Unit>(capacity = Channel.CONFLATED) {
         for (event in channel) {
             refreshing.value = true
-            projects.value = ProjectsRepository.loadProjects()
+            ProjectsRepository.load()
             refreshing.value = false
         }
     }
 
-    // Observable data
-    val projects = MutableLiveData<List<Project>>()
-    val refreshing = MutableLiveData<Boolean>()
-
-    init {
-        // Populate initial data
-        handleRefresh()
+    // Observable state
+    val projects = Transformations.map(ProjectsRepository.data) {
+        it.projects
     }
+    val refreshing = MutableLiveData<Boolean>()
 
     fun handleRefresh() = actor.offer(Unit)
 }

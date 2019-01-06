@@ -13,7 +13,7 @@ import io.github.zwliew.zwliew.util.viewUri
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.view_note_item.*
 
-class NotesListAdapter : ListAdapter<NoteSummary, NoteViewHolder>(DiffCallback) {
+class NotesListAdapter : ListAdapter<Note, NoteViewHolder>(DiffCallback) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoteViewHolder {
         return NoteViewHolder(
             LayoutInflater.from(parent.context)
@@ -39,7 +39,7 @@ class NoteViewHolder(
         }
     }
 
-    fun bind(note: NoteSummary) {
+    fun bind(note: Note) {
         note.let {
             slug = it.slug
             title_text.text = it.title
@@ -48,12 +48,12 @@ class NoteViewHolder(
     }
 }
 
-object DiffCallback : DiffUtil.ItemCallback<NoteSummary>() {
-    override fun areItemsTheSame(oldItem: NoteSummary, newItem: NoteSummary): Boolean {
+object DiffCallback : DiffUtil.ItemCallback<Note>() {
+    override fun areItemsTheSame(oldItem: Note, newItem: Note): Boolean {
         return oldItem.slug == newItem.slug
     }
 
-    override fun areContentsTheSame(oldItem: NoteSummary, newItem: NoteSummary): Boolean {
+    override fun areContentsTheSame(oldItem: Note, newItem: Note): Boolean {
         return oldItem == newItem
     }
 }

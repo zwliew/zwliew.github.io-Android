@@ -20,18 +20,34 @@ class AboutFragment(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // Do all the initialization in onViewCreated() instead of onCreateView()
+        // in order to use the synthetic properties in Kotlin Android Extensions
+
         // Configure event handlers
         resume_button.setOnClickListener {
             viewUri(it, it.context, "${API_BASE_URL}res/resume.pdf")
         }
 
-        val viewModel = ViewModelProviders.of(this).get(AboutViewModel::class.java)
-        val listAdapter = AboutCategoryListAdapter(
-            lifecycle, viewModel.educations, viewModel.activities, viewModel.achievements
-        )
-
         // Set up ListView
+        val viewModel = ViewModelProviders.of(this).get(AboutViewModel::class.java)
+        val listAdapter = AboutCategoryListAdapter().apply {
+            viewModel.educations.observe({ lifecycle }) {
+                this.educations = it
+                notifyDataSetChanged()
+            }
+            viewModel.activities.observe({ lifecycle }) {
+                this.activities = it
+                notifyDataSetChanged()
+            }
+            viewModel.achievements.observe({ lifecycle }) {
+                this.achievements = it
+                notifyDataSetChanged()
+            }
+        }
         category_list.setAdapter(listAdapter)
         ViewCompat.setNestedScrollingEnabled(category_list, true)
+
+        // Set up initial state
+        viewModel.handleRefresh()
     }
 }

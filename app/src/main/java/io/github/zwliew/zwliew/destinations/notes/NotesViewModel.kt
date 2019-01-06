@@ -1,6 +1,7 @@
 package io.github.zwliew.zwliew.destinations.notes
 
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.ObsoleteCoroutinesApi
@@ -13,19 +14,16 @@ class NotesViewModel : ViewModel() {
     private val actor = viewModelScope.actor<Unit>(capacity = Channel.CONFLATED) {
         for (event in channel) {
             refreshing.value = true
-            notes.value = NotesRepository.loadNotes()
+            NotesRepository.load()
             refreshing.value = false
         }
     }
 
-    // Observable data
-    val notes = MutableLiveData<List<NoteSummary>>()
-    val refreshing = MutableLiveData<Boolean>()
-
-    init {
-        // Populate initial data
-        handleRefresh()
+    // Observable state
+    val notes = Transformations.map(NotesRepository.data) {
+        it.notes
     }
+    val refreshing = MutableLiveData<Boolean>()
 
     fun handleRefresh() = actor.offer(Unit)
 }

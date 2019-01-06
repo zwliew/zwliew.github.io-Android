@@ -1,9 +1,17 @@
 package io.github.zwliew.zwliew.destinations.about
 
-data class AboutList(
+// Retrofit API data
+data class AboutAPI(
     val education: List<Education>,
     val activities: List<Activity>,
     val achievements: List<Achievement>
+)
+
+// Internal data
+data class AboutData(
+    var educations: List<Education>,
+    var activities: List<Activity>,
+    var achievements: List<Achievement>
 )
 
 interface AboutCategoryItem {
@@ -28,10 +36,3 @@ data class Achievement(
     val award: String,
     override val href: String
 ) : AboutCategoryItem
-
-data class AboutCache(
-    var initialized: Boolean = false,
-    var educations: List<Education> = listOf(),
-    var activities: List<Activity> = listOf(),
-    var achievements: List<Achievement> = listOf()
-)

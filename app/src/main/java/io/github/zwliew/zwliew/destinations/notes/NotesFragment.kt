@@ -43,5 +43,8 @@ class NotesFragment(
             layoutManager = LinearLayoutManager(view.context)
             adapter = listAdapter
         }
+
+        // Set up initial state
+        viewModel.handleRefresh()
     }
 }

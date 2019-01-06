@@ -5,41 +5,23 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseExpandableListAdapter
 import android.widget.TextView
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.LiveData
 import io.github.zwliew.zwliew.R
 import io.github.zwliew.zwliew.util.viewUri
-import timber.log.Timber
-
 
 const val EDUCATIONS_TITLE = "Education"
 const val ACTIVITIES_TITLE = "Activities"
 const val ACHIEVEMENTS_TITLE = "Achievements"
 
-class AboutCategoryListAdapter(
-    lifecycle: Lifecycle,
-    private val educations: LiveData<List<Education>>,
-    private val activities: LiveData<List<Activity>>,
-    private val achievements: LiveData<List<Achievement>>
-) : BaseExpandableListAdapter() {
-    init {
-        educations.observe({ lifecycle }) {
-            notifyDataSetChanged()
-        }
-        activities.observe({ lifecycle }) {
-            notifyDataSetChanged()
-        }
-        achievements.observe({ lifecycle }) {
-            notifyDataSetChanged()
-        }
-    }
+class AboutCategoryListAdapter : BaseExpandableListAdapter() {
+    var educations: List<Education> = listOf()
+    var activities: List<Activity> = listOf()
+    var achievements: List<Achievement> = listOf()
 
     override fun getGroup(groupPos: Int): List<AboutCategoryItem>? {
-        Timber.d(groupPos.toString())
         return when (groupPos) {
-            0 -> educations.value
-            1 -> activities.value
-            2 -> achievements.value
+            0 -> educations
+            1 -> activities
+            2 -> achievements
             else -> throw IllegalArgumentException()
         }
     }

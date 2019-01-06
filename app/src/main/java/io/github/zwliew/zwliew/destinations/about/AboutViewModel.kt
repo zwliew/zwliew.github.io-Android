@@ -1,6 +1,6 @@
 package io.github.zwliew.zwliew.destinations.about
 
-import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.ObsoleteCoroutinesApi
@@ -12,23 +12,20 @@ class AboutViewModel : ViewModel() {
     @UseExperimental(ObsoleteCoroutinesApi::class)
     private val actor = viewModelScope.actor<Unit>(capacity = Channel.CONFLATED) {
         for (event in channel) {
-            AboutRepository.loadAbout().let {
-                educations.value = it.education
-                activities.value = it.activities
-                achievements.value = it.achievements
-            }
+            AboutRepository.load()
         }
     }
 
     // Observable state
-    val educations = MutableLiveData<List<Education>>()
-    val activities = MutableLiveData<List<Activity>>()
-    val achievements = MutableLiveData<List<Achievement>>()
-
-    init {
-        // Populate initial data
-        handleRefresh()
+    val educations = Transformations.map(AboutRepository.data) {
+        it.educations
+    }
+    val activities = Transformations.map(AboutRepository.data) {
+        it.activities
+    }
+    val achievements = Transformations.map(AboutRepository.data) {
+        it.achievements
     }
 
-    private fun handleRefresh() = actor.offer(Unit)
+    fun handleRefresh() = actor.offer(Unit)
 }

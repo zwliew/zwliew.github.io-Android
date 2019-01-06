@@ -1,30 +1,22 @@
 package io.github.zwliew.zwliew.destinations.about
 
+import androidx.lifecycle.MutableLiveData
+import io.github.zwliew.zwliew.BaseRepository
 import io.github.zwliew.zwliew.util.retrofit
 
-object AboutRepository {
+object AboutRepository : BaseRepository<AboutData> {
     private val service = retrofit.create(AboutService::class.java)
 
-    private val cache = AboutCache()
+    override val data = MutableLiveData<AboutData>()
 
-    suspend fun loadAbout(): AboutList {
-        // Check cache
-        if (cache.initialized) {
-            return AboutList(
-                cache.educations,
-                cache.activities,
-                cache.achievements
-            )
-        }
-
-        // Fetch from network
+    override suspend fun load() {
         val response = service.getAboutAsync().await()
-        return response.also {
-            // Cache the retrieved data
-            cache.educations = it.education
-            cache.achievements = it.achievements
-            cache.activities = it.activities
-            cache.initialized = true
+        response.let {
+            data.value = AboutData(
+                it.education,
+                it.activities,
+                it.achievements
+            )
         }
     }
 }
