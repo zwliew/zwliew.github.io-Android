@@ -6,12 +6,13 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.ObsoleteCoroutinesApi
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.channels.actor
+import kotlinx.coroutines.channels.consumeEach
 
 class AboutViewModel : ViewModel() {
     // Ensure that only 1 request is buffered while another is being processed
     @UseExperimental(ObsoleteCoroutinesApi::class)
     private val actor = viewModelScope.actor<Unit>(capacity = Channel.CONFLATED) {
-        for (event in channel) {
+        consumeEach {
             AboutRepository.load()
         }
     }
@@ -25,6 +26,9 @@ class AboutViewModel : ViewModel() {
     }
     val achievements = Transformations.map(AboutRepository.data) {
         it.achievements
+    }
+    val status = Transformations.map(AboutRepository.data) {
+        it.status
     }
 
     fun handleRefresh() = actor.offer(Unit)

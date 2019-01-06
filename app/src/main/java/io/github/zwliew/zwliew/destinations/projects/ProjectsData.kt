@@ -1,11 +1,15 @@
 package io.github.zwliew.zwliew.destinations.projects
 
+import io.github.zwliew.zwliew.Empty
+import io.github.zwliew.zwliew.RepositoryStatus
+
 // Retrofit API data
-data class ProjectsAPI(val projects: List<Project>)
+data class ProjectsApi(val projects: List<Project>)
 
 // Internal data
 data class ProjectsData(
-    val projects: List<Project>
+    val status: RepositoryStatus = Empty,
+    val projects: List<Project> = listOf()
 )
 data class Project(
     val name: String,

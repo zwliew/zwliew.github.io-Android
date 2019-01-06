@@ -20,5 +20,6 @@
     <string name="auto_theme_title">Automatic based on time</string>
     <string name="system_theme_title">Use system setting</string>
     <string name="about_category_title">Category title</string>
-    <string name="retry_title">Retry</string>
+    <string name="retry_action">Retry</string>
+    <string name="no_network_message">No network connection</string>
 </resources>

@@ -8,3 +8,9 @@ interface BaseRepository<T> {
 
     suspend fun load()
 }
+
+sealed class RepositoryStatus
+object Empty : RepositoryStatus()
+object Loading : RepositoryStatus()
+object Loaded : RepositoryStatus()
+object Failed : RepositoryStatus()

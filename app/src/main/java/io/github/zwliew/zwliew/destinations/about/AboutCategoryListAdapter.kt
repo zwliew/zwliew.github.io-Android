@@ -8,9 +8,10 @@ import android.widget.TextView
 import io.github.zwliew.zwliew.R
 import io.github.zwliew.zwliew.util.viewUri
 
-const val EDUCATIONS_TITLE = "Education"
-const val ACTIVITIES_TITLE = "Activities"
-const val ACHIEVEMENTS_TITLE = "Achievements"
+sealed class AboutCategoryTitle(val title: String)
+object EducationsTitle : AboutCategoryTitle("Education")
+object ActivitiesTitle : AboutCategoryTitle("Activities")
+object AchievementsTitle : AboutCategoryTitle("Achievements")
 
 class AboutCategoryListAdapter : BaseExpandableListAdapter() {
     var educations: List<Education> = listOf()
@@ -26,11 +27,11 @@ class AboutCategoryListAdapter : BaseExpandableListAdapter() {
         }
     }
 
-    private fun getGroupTitle(groupPos: Int): String {
+    private fun getGroupTitle(groupPos: Int): AboutCategoryTitle {
         return when (groupPos) {
-            0 -> EDUCATIONS_TITLE
-            1 -> ACTIVITIES_TITLE
-            2 -> ACHIEVEMENTS_TITLE
+            0 -> EducationsTitle
+            1 -> ActivitiesTitle
+            2 -> AchievementsTitle
             else -> throw IllegalArgumentException()
         }
     }
@@ -43,7 +44,7 @@ class AboutCategoryListAdapter : BaseExpandableListAdapter() {
         val view = convertView ?: LayoutInflater.from(parent.context)
             .inflate(R.layout.view_about_category_group, parent, false)
         val titleText = view.findViewById<TextView>(R.id.title_text)
-        titleText.text = getGroupTitle(groupPos)
+        titleText.text = getGroupTitle(groupPos).title
         return view
     }
 
@@ -66,10 +67,9 @@ class AboutCategoryListAdapter : BaseExpandableListAdapter() {
         view.run {
             val itemText = findViewById<TextView>(R.id.item_text)
             itemText.text = when (getGroupTitle(groupPos)) {
-                EDUCATIONS_TITLE -> formatEducationText(data as Education)
-                ACTIVITIES_TITLE -> formatActivityText(data as Activity)
-                ACHIEVEMENTS_TITLE -> formatAchievementText(data as Achievement)
-                else -> throw IllegalArgumentException()
+                EducationsTitle -> formatEducationText(data as Education)
+                ActivitiesTitle -> formatActivityText(data as Activity)
+                AchievementsTitle -> formatAchievementText(data as Achievement)
             }
             setOnClickListener {
                 viewUri(it, it.context, data.href)

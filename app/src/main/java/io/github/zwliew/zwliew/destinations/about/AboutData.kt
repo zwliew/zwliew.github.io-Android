@@ -1,7 +1,10 @@
 package io.github.zwliew.zwliew.destinations.about
 
+import io.github.zwliew.zwliew.Empty
+import io.github.zwliew.zwliew.RepositoryStatus
+
 // Retrofit API data
-data class AboutAPI(
+data class AboutApi(
     val education: List<Education>,
     val activities: List<Activity>,
     val achievements: List<Achievement>
@@ -9,9 +12,10 @@ data class AboutAPI(
 
 // Internal data
 data class AboutData(
-    var educations: List<Education>,
-    var activities: List<Activity>,
-    var achievements: List<Achievement>
+    val status: RepositoryStatus = Empty,
+    val educations: List<Education> = listOf(),
+    val activities: List<Activity> = listOf(),
+    val achievements: List<Achievement> = listOf()
 )
 
 interface AboutCategoryItem {

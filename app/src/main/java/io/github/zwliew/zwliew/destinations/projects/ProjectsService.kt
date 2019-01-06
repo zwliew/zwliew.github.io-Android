@@ -5,5 +5,5 @@ import retrofit2.http.GET
 
 interface ProjectsService {
     @GET("res/data/projects.json")
-    fun getProjectsAsync(): Deferred<ProjectsAPI>
+    fun getProjectsAsync(): Deferred<ProjectsApi>
 }

@@ -8,6 +8,8 @@ import androidx.annotation.LayoutRes
 import androidx.annotation.MenuRes
 import androidx.core.view.ViewCompat
 import androidx.lifecycle.ViewModelProviders
+import com.google.android.material.snackbar.Snackbar
+import io.github.zwliew.zwliew.Failed
 import io.github.zwliew.zwliew.R
 import io.github.zwliew.zwliew.destinations.BaseFragment
 import io.github.zwliew.zwliew.util.API_BASE_URL
@@ -48,6 +50,14 @@ class AboutFragment(
             achievements.observe({ lifecycle }) {
                 listAdapter.achievements = it
                 listAdapter.notifyDataSetChanged()
+            }
+            status.observe({ lifecycle }) {
+                if (it == Failed) {
+                    Snackbar.make(view, R.string.no_network_message, Snackbar.LENGTH_SHORT)
+                        .setAction(R.string.retry_action) {
+                            handleRefresh()
+                        }.show()
+                }
             }
         }
 

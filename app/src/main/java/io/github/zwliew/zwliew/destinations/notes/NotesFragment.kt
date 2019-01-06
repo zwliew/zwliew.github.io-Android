@@ -7,6 +7,9 @@ import androidx.annotation.LayoutRes
 import androidx.annotation.MenuRes
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.snackbar.Snackbar
+import io.github.zwliew.zwliew.Failed
+import io.github.zwliew.zwliew.Loading
 import io.github.zwliew.zwliew.R
 import io.github.zwliew.zwliew.destinations.BaseFragment
 import kotlinx.android.synthetic.main.fragment_notes.*
@@ -31,8 +34,14 @@ class NotesFragment(
             notes.observe({ lifecycle }) {
                 listAdapter.submitList(it)
             }
-            refreshing.observe({ lifecycle }) {
-                layout.isRefreshing = it
+            status.observe({ lifecycle }) {
+                layout.isRefreshing = it == Loading
+                if (it == Failed) {
+                    Snackbar.make(view, R.string.no_network_message, Snackbar.LENGTH_SHORT)
+                        .setAction(R.string.retry_action) {
+                            handleRefresh()
+                        }.show()
+                }
             }
         }
 

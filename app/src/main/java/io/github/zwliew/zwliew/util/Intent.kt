@@ -27,7 +27,7 @@ fun viewUri(view: View, context: Context, uriString: String) {
         if (!success) {
             Snackbar
                 .make(view, "Unable to launch URL", Snackbar.LENGTH_SHORT)
-                .setAction(R.string.retry_title) {
+                .setAction(R.string.retry_action) {
                     viewUri(view, context, uriString)
                 }.show()
         }
