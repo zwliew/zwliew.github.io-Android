@@ -12,9 +12,11 @@ class AboutViewModel : ViewModel() {
     @UseExperimental(ObsoleteCoroutinesApi::class)
     private val actor = viewModelScope.actor<Unit>(capacity = Channel.CONFLATED) {
         for (event in channel) {
-            educations.value = AboutRepository.loadEducations()
-            activities.value = AboutRepository.loadActivities()
-            achievements.value = AboutRepository.loadAchievements()
+            AboutRepository.loadAbout().let {
+                educations.value = it.education
+                activities.value = it.activities
+                achievements.value = it.achievements
+            }
         }
     }
 

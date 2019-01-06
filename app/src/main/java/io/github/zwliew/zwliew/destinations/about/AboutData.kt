@@ -31,7 +31,7 @@ data class Achievement(
 
 data class AboutCache(
     var initialized: Boolean = false,
-    var education: List<Education> = listOf(),
+    var educations: List<Education> = listOf(),
     var activities: List<Activity> = listOf(),
     var achievements: List<Achievement> = listOf()
 )
