@@ -2,6 +2,7 @@ package io.github.zwliew.zwliew.destinations.about
 
 
 import android.os.Bundle
+import android.view.MenuItem
 import android.view.View
 import androidx.annotation.LayoutRes
 import androidx.annotation.MenuRes
@@ -15,8 +16,12 @@ import kotlinx.android.synthetic.main.fragment_about.*
 
 class AboutFragment(
     @LayoutRes override val layoutId: Int = R.layout.fragment_about,
-    @MenuRes override val menuId: Int = R.menu.menu_generic_toolbar
+    @MenuRes override val menuId: Int = R.menu.menu_refreshable_toolbar
 ) : BaseFragment() {
+    private val viewModel by lazy {
+        ViewModelProviders.of(this).get(AboutViewModel::class.java)
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -28,26 +33,37 @@ class AboutFragment(
             viewUri(it, it.context, "${API_BASE_URL}res/resume.pdf")
         }
 
-        // Set up ListView
-        val viewModel = ViewModelProviders.of(this).get(AboutViewModel::class.java)
-        val listAdapter = AboutCategoryListAdapter().apply {
-            viewModel.educations.observe({ lifecycle }) {
-                this.educations = it
-                notifyDataSetChanged()
+        val listAdapter = AboutCategoryListAdapter()
+
+        // Bind ViewModel state
+        viewModel.apply {
+            educations.observe({ lifecycle }) {
+                listAdapter.educations = it
+                listAdapter.notifyDataSetChanged()
             }
-            viewModel.activities.observe({ lifecycle }) {
-                this.activities = it
-                notifyDataSetChanged()
+            activities.observe({ lifecycle }) {
+                listAdapter.activities = it
+                listAdapter.notifyDataSetChanged()
             }
-            viewModel.achievements.observe({ lifecycle }) {
-                this.achievements = it
-                notifyDataSetChanged()
+            achievements.observe({ lifecycle }) {
+                listAdapter.achievements = it
+                listAdapter.notifyDataSetChanged()
             }
         }
+
+        // Set up ListView
         category_list.setAdapter(listAdapter)
         ViewCompat.setNestedScrollingEnabled(category_list, true)
 
         // Set up initial state
         viewModel.handleRefresh()
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.refresh) {
+            viewModel.handleRefresh()
+            return true
+        }
+        return super.onOptionsItemSelected(item)
     }
 }

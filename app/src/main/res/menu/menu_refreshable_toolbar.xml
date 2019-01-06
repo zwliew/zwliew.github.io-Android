@@ -4,6 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
+        android:id="@+id/refresh"
         android:icon="@drawable/ic_refresh_black_24dp"
         android:title="@string/refresh_title"
         app:iconTint="@color/textColor"
