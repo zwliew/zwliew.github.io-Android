@@ -39,17 +39,13 @@ class AboutFragment(
 
         // Bind ViewModel state
         viewModel.apply {
-            educations.observe({ lifecycle }) {
-                listAdapter.educations = it
-                listAdapter.notifyDataSetChanged()
-            }
-            activities.observe({ lifecycle }) {
-                listAdapter.activities = it
-                listAdapter.notifyDataSetChanged()
-            }
-            achievements.observe({ lifecycle }) {
-                listAdapter.achievements = it
-                listAdapter.notifyDataSetChanged()
+            data.observe({ lifecycle }) {
+                listAdapter.apply {
+                    educations = it.educations
+                    activities = it.activities
+                    achievements = it.achievements
+                    notifyDataSetChanged()
+                }
             }
             status.observe({ lifecycle }) {
                 if (it == Failed) {

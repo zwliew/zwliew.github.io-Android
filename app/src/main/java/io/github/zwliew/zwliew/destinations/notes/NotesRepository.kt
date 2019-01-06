@@ -8,22 +8,22 @@ import io.github.zwliew.zwliew.Loading
 import io.github.zwliew.zwliew.util.retrofit
 import java.net.UnknownHostException
 
-object NotesRepository : BaseRepository<NotesData> {
+object NotesRepository : BaseRepository<NotesState> {
     private val service = retrofit.create(NotesService::class.java)
 
-    override val data = MutableLiveData<NotesData>()
+    override val state = MutableLiveData<NotesState>()
 
     override suspend fun load() {
-        data.value = data.value?.copy(status = Loading) ?: NotesData(Loading)
+        state.value = state.value?.copy(status = Loading) ?: NotesState(Loading)
 
         try {
             val response = service.getNotesAsync().await()
             response.let {
-                data.value = NotesData(Loaded, it.notes)
+                state.value = NotesState(Loaded, it.notes)
             }
         } catch (e: UnknownHostException) {
             // Handle no network connection
-            data.value = data.value?.copy(status = Failed) ?: NotesData(Failed)
+            state.value = state.value?.copy(status = Failed) ?: NotesState(Failed)
         }
     }
 }

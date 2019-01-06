@@ -7,7 +7,7 @@ import io.github.zwliew.zwliew.RepositoryStatus
 data class NotesApi(val notes: List<Note>)
 
 // Internal data
-data class NotesData(
+data class NotesState(
     val status: RepositoryStatus = Empty,
     val notes: List<Note> = listOf()
 )

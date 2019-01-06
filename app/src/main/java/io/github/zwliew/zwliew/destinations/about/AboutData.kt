@@ -11,8 +11,12 @@ data class AboutApi(
 )
 
 // Internal data
-data class AboutData(
+data class AboutState(
     val status: RepositoryStatus = Empty,
+    val data: AboutData = AboutData()
+)
+
+data class AboutData(
     val educations: List<Education> = listOf(),
     val activities: List<Activity> = listOf(),
     val achievements: List<Achievement> = listOf()

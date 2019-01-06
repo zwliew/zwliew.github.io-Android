@@ -18,10 +18,10 @@ class ProjectsViewModel : ViewModel() {
     }
 
     // Observable state
-    val projects = Transformations.map(ProjectsRepository.data) {
+    val projects = Transformations.map(ProjectsRepository.state) {
         it.projects
     }
-    val status = Transformations.map(ProjectsRepository.data) {
+    val status = Transformations.map(ProjectsRepository.state) {
         it.status
     }
 

@@ -7,10 +7,11 @@ import io.github.zwliew.zwliew.RepositoryStatus
 data class ProjectsApi(val projects: List<Project>)
 
 // Internal data
-data class ProjectsData(
+data class ProjectsState(
     val status: RepositoryStatus = Empty,
     val projects: List<Project> = listOf()
 )
+
 data class Project(
     val name: String,
     val tagline: String,

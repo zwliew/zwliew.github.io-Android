@@ -18,16 +18,10 @@ class AboutViewModel : ViewModel() {
     }
 
     // Observable state
-    val educations = Transformations.map(AboutRepository.data) {
-        it.educations
+    val data = Transformations.map(AboutRepository.state) {
+        it.data
     }
-    val activities = Transformations.map(AboutRepository.data) {
-        it.activities
-    }
-    val achievements = Transformations.map(AboutRepository.data) {
-        it.achievements
-    }
-    val status = Transformations.map(AboutRepository.data) {
+    val status = Transformations.map(AboutRepository.state) {
         it.status
     }
 

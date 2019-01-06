@@ -18,10 +18,10 @@ class NotesViewModel : ViewModel() {
     }
 
     // Observable state
-    val notes = Transformations.map(NotesRepository.data) {
+    val notes = Transformations.map(NotesRepository.state) {
         it.notes
     }
-    val status = Transformations.map(NotesRepository.data) {
+    val status = Transformations.map(NotesRepository.state) {
         it.status
     }
 
