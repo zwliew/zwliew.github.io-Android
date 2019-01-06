@@ -18,7 +18,8 @@ class MainApplication : Application() {
             // You should not init your app in this process.
             return
         }
-        LeakCanary.install(this)
+        // TODO
+        //LeakCanary.install(this)
 
         // Install Timber
         if (BuildConfig.DEBUG) Timber.plant(Timber.DebugTree())

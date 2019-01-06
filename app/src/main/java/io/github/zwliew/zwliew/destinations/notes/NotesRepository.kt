@@ -1,10 +1,7 @@
 package io.github.zwliew.zwliew.destinations.notes
 
 import androidx.lifecycle.MutableLiveData
-import io.github.zwliew.zwliew.BaseRepository
-import io.github.zwliew.zwliew.Failed
-import io.github.zwliew.zwliew.Loaded
-import io.github.zwliew.zwliew.Loading
+import io.github.zwliew.zwliew.*
 import io.github.zwliew.zwliew.util.retrofit
 import java.net.UnknownHostException
 
@@ -14,16 +11,16 @@ object NotesRepository : BaseRepository<NotesState> {
     override val state = MutableLiveData<NotesState>()
 
     override suspend fun load() {
-        state.value = state.value?.copy(status = Loading) ?: NotesState(Loading)
+        state.value = state.value?.copy(status = Event(Loading)) ?: NotesState(Event(Loading))
 
         try {
             val response = service.getNotesAsync().await()
             response.let {
-                state.value = NotesState(Loaded, it.notes)
+                state.value = NotesState(Event(Loaded), it.notes)
             }
         } catch (e: UnknownHostException) {
             // Handle no network connection
-            state.value = state.value?.copy(status = Failed) ?: NotesState(Failed)
+            state.value = state.value?.copy(status = Event(Failed)) ?: NotesState(Event(Failed))
         }
     }
 }

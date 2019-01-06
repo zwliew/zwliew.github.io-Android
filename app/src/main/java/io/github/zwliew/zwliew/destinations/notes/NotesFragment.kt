@@ -34,13 +34,15 @@ class NotesFragment(
             notes.observe({ lifecycle }) {
                 listAdapter.submitList(it)
             }
-            status.observe({ lifecycle }) {
-                layout.isRefreshing = it == Loading
-                if (it == Failed) {
-                    Snackbar.make(view, R.string.no_network_message, Snackbar.LENGTH_SHORT)
-                        .setAction(R.string.retry_action) {
-                            handleRefresh()
-                        }.show()
+            status.observe({ lifecycle }) { event ->
+                event.value?.let {
+                    layout.isRefreshing = it == Loading
+                    if (it == Failed) {
+                        Snackbar.make(view, R.string.no_network_message, Snackbar.LENGTH_INDEFINITE)
+                            .setAction(R.string.retry_action) {
+                                handleRefresh()
+                            }.show()
+                    }
                 }
             }
         }

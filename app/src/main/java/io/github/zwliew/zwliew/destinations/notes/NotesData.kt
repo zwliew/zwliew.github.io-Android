@@ -1,6 +1,7 @@
 package io.github.zwliew.zwliew.destinations.notes
 
 import io.github.zwliew.zwliew.Empty
+import io.github.zwliew.zwliew.Event
 import io.github.zwliew.zwliew.RepositoryStatus
 
 // Retrofit API data
@@ -8,7 +9,7 @@ data class NotesApi(val notes: List<Note>)
 
 // Internal data
 data class NotesState(
-    val status: RepositoryStatus = Empty,
+    val status: Event<RepositoryStatus> = Event(Empty),
     val notes: List<Note> = listOf()
 )
 

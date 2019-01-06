@@ -1,6 +1,7 @@
 package io.github.zwliew.zwliew.destinations.about
 
 import io.github.zwliew.zwliew.Empty
+import io.github.zwliew.zwliew.Event
 import io.github.zwliew.zwliew.RepositoryStatus
 
 // Retrofit API data
@@ -12,7 +13,7 @@ data class AboutApi(
 
 // Internal data
 data class AboutState(
-    val status: RepositoryStatus = Empty,
+    val status: Event<RepositoryStatus> = Event(Empty),
     val data: AboutData = AboutData()
 )
 
